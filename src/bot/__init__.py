@@ -4,6 +4,7 @@ from .handlers import DiscordConnectionHandler
 from .commands import ChildBotCommands
 from .channel_monitor import ChannelMonitor
 from .message_parser import MessageParser
+from .authentication import AuthenticationManager
 
 __all__ = [
     'DeviceIdentity',
@@ -12,5 +13,6 @@ __all__ = [
     'DiscordConnectionHandler',
     'ChildBotCommands',
     'ChannelMonitor',
-    'MessageParser'
+    'MessageParser',
+    'AuthenticationManager'
 ]

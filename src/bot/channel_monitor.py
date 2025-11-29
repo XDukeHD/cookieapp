@@ -3,6 +3,7 @@ import discord
 from src.config import GUILD_ID, CHANNEL_ID, DEBUG_MODE
 from src.bot.device_identity import DeviceIdentity
 from src.bot.message_parser import MessageParser
+from src.actions import ActionLoader
 
 
 class ChannelMonitor:
@@ -14,6 +15,7 @@ class ChannelMonitor:
     
     async def start_monitoring(self):
         await self.bot.wait_until_ready()
+        ActionLoader.load_actions()
         
         while True:
             try:
@@ -78,3 +80,5 @@ class ChannelMonitor:
     async def _execute_action(self, action, message):
         if DEBUG_MODE:
             print(f"Executing action: {action}")
+        
+        await ActionLoader.execute_action(action, message, trigger_type='channel')

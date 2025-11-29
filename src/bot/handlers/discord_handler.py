@@ -16,6 +16,7 @@ class DiscordConnectionHandler:
         intents.dm_messages = True
         
         self.client = commands.Bot(command_prefix="c!", intents=intents)
+        self.client.remove_command('help')
         self.token_manager = TokenManager()
         self.max_retries = 5
         self.retry_count = 0
