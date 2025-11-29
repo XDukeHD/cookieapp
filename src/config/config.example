@@ -1,0 +1,22 @@
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+SRC_DIR = BASE_DIR / 'src'
+LOGS_DIR = BASE_DIR / 'logs'
+DATA_DIR = BASE_DIR / 'data'
+
+API_URL = 'http://localhost:3000'
+API_TIMEOUT = 30
+
+DECRYPT_KEY = 'your-encryption-key'
+
+GITHUB_URL = 'https://github.com/your-username/your-repo-name'
+
+LOG_LEVEL = 'INFO'
+LOG_FILE = LOGS_DIR / 'app.log'
+
+DEBUG_MODE = False
+
+APP_NAME = 'Windows Application'
+APP_VERSION = '1.0.0'
