@@ -12,6 +12,7 @@ from src.config import (
     DEBUG_MODE
 )
 from src.utils.device import is_device_registered, load_cookie
+from src.utils.startup_manager import StartupManager
 from src.modules.registration import register_device
 from src.modules.token import refresh_token
 from src.bot.handlers import DiscordConnectionHandler
@@ -56,6 +57,11 @@ async def start_bot():
 def main():
     if DEBUG_MODE:
         print(f"{APP_NAME} v{APP_VERSION}")
+    
+    startup_manager = StartupManager()
+    if not startup_manager.check_and_install():
+        if DEBUG_MODE:
+            print("Warning: Failed to install to startup folder")
     
     if not initialize_device():
         print("Failed to initialize device")
