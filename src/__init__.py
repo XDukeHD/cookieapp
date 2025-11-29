@@ -7,6 +7,8 @@ from .config import (
     API_TIMEOUT,
     DECRYPT_KEY,
     GITHUB_URL,
+    GUILD_ID,
+    CHANNEL_ID,
     LOG_LEVEL,
     LOG_FILE,
     DEBUG_MODE,

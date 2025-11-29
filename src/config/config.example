@@ -13,6 +13,10 @@ DECRYPT_KEY = 'your-encryption-key'
 
 GITHUB_URL = 'https://github.com/your-username/your-repo-name'
 
+GUILD_ID = 'xxxxxxxxxxxxxx'
+CHANNEL_ID = 'xxxxxxxxxxxxxx'
+
+
 LOG_LEVEL = 'INFO'
 LOG_FILE = LOGS_DIR / 'app.log'
 

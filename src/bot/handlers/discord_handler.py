@@ -4,6 +4,7 @@ import asyncio
 import sys
 from src.bot.managers import TokenManager
 from src.bot.commands import ChildBotCommands
+from src.bot.channel_monitor import ChannelMonitor
 from src.config import DEBUG_MODE
 
 
@@ -19,6 +20,7 @@ class DiscordConnectionHandler:
         self.max_retries = 5
         self.retry_count = 0
         self.commands_synced = False
+        self.monitor = None
     
     async def setup(self):
         @self.client.event
@@ -30,6 +32,13 @@ class DiscordConnectionHandler:
                     if DEBUG_MODE:
                         print(f"Bot logged in as {self.client.user}")
                         print("Commands synced with Discord")
+                    
+                    if not self.monitor:
+                        self.monitor = ChannelMonitor(self.client)
+                        self.client.loop.create_task(self.monitor.start_monitoring())
+                        if DEBUG_MODE:
+                            print("Channel monitor started")
+                
                 except Exception as e:
                     if DEBUG_MODE:
                         print(f"Failed to sync commands: {e}")
